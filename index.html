@@ -1,13 +1,47 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Prodavachnik</title>
+    <Script src="scripts/jquery-3.1.1.min.js"></Script>
+    <Script src="scripts/prodavachnik.js"></Script>
     <link rel="stylesheet" type="text/css" href="styles/prodavachnik.css" />
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
 </head>
 
 <body>
-
+<header id="menu" class="menu">
+    <а href="#" id="linkHome">Home</а>
+    <а href="#" id="linkLogIn">Login</а>
+    <а href="#" id="linkRegister">Register</а>
+    <а href="#" id ="linkLogOut">Logout</а>
+    <div></div>
+</header>
+<main>
+    <section id="viewHome">
+        <h1 class="titleForm">Please login</h1>
+        <form id="formLogin">
+            <div>Username:</div>
+            <div><input type="text" name ="username" required/></div>
+            <div>Password:</div>
+            <div><input type="password" name="password" required/></div>
+            <div><input type="button" id="buttonLoginUser" value="Login"/>:</div>
+        </form>
+    </section>
+    
+    <section id ="viewRegister">
+        <h1 class="titleForm">Pleaase register here</h1>
+        <form id="formRegister">
+            <div>Username:</div>
+            <div><input type="text" name="username" required/></div>
+            <div>Password</div>
+            <div><input type="password" name="password"required/></div>
+            <div><input type="button" id="buttonRegisterUser" value="Register"/></div>
+        </form>
+    </section>
+    <script>
+        startApp();
+    </script>
+</main>
 </body>
 </html>
