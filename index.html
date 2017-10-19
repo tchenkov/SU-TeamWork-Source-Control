@@ -12,38 +12,47 @@
 </head>
 
 <body>
-<header id="menu" class="menu">
-    <а href="#" id="linkHome">Home</а>
-    <а href="#" id="linkLogIn">Login</а>
-    <а href="#" id="linkRegister">Register</а>
-    <а href="#" id ="linkLogOut">Logout</а>
-    <div></div>
-</header>
-<main>
-    <section id="viewHome">
-        <h1 class="titleForm">Please login</h1>
-        <form id="formLogin">
-            <div>Username:</div>
-            <div><input type="text" name ="username" required/></div>
-            <div>Password:</div>
-            <div><input type="password" name="password" required/></div>
-            <div><input type="button" id="buttonLoginUser" value="Login"/>:</div>
-        </form>
-    </section>
-    
-    <section id ="viewRegister">
-        <h1 class="titleForm">Pleaase register here</h1>
-        <form id="formRegister">
-            <div>Username:</div>
-            <div><input type="text" name="username" required/></div>
-            <div>Password</div>
-            <div><input type="password" name="password"required/></div>
-            <div><input type="button" id="buttonRegisterUser" value="Register"/></div>
-        </form>
-    </section>
-    <script>
-        startApp();
-    </script>
-</main>
+    <header id="menu" class="menu">
+        <a href="#" id="linkHome" class="menu-item">Home</a>
+        <a href="#" id="linkLogin" class="menu-item">Login</a>
+        <a href="#" id="linkRegister" class="menu-item">Register</a>
+        <a href="#" id="linkLogout" class="menu-item">Logout</a>
+        <div></div>
+    </header>
+
+    <main>
+        <section id="viewHome" class="viewHome">
+            <h1 class="title">Welcome</h1>
+            <p class="body-text">Welcome to our advertisement site.</p>
+        </section>
+
+        <section id="viewLogin" class="viewLogin">
+            <h1 class="titleForm">Please login</h1>
+            <form id="formLogin" class="form">
+                <div>Username:</div>
+                <div><input type="text" name="username" required /></div>
+                <div>Password:</div>
+                <div><input type="password" name="passwd" required /></div>
+                <div><input type="button" id="buttonLoginUser" value="Login" /></div>
+            </form>
+        </section>
+
+        <section id="viewRegister" class="viewRegister">
+            <h1 class="titleForm">Please register here</h1>
+            <form id="formRegister" class="form">
+                <div>Username:</div>
+                <div><input type="text" name="username" required /></div>
+                <div>Password:</div>
+                <div><input type="password" name="passwd" required /></div>
+                <div><input type="button" id="buttonRegisterUser" value="Register" /></div>
+            </form>
+        </section>
+
+        <script>
+            startApp();
+        </script>
+    </main>
+    <footer>Prodavachnik - Simple SPA Application</footer>
 </body>
+
 </html>
