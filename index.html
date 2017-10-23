@@ -9,6 +9,7 @@
     <script src="scripts/prodavachnik.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/prodavachnik.css" />
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+    <span id="loggedInUser" class="menu-item"></span>
 </head>
 
 <body>
@@ -19,10 +20,17 @@
         <a href="#" id="linkListAds" class="menu-item">List Advertisements</a>
 		<a href="#" id="linkCreateAd" class="menu-item">Create Advertisement</a>
         <a href="#" id="linkLogout" class="menu-item">Logout</a>
+		<span id="loggedInUser" class="menu-item"></span>
         <div></div>
     </header>
 
     <main>
+	<section id="loadingBox" class="loadingBox">Loading...
+        </section>
+		<section id="infoBox" class="infoBox">Info
+        </section>
+		<section id="errorBox" class="errorBox">Error
+        </section>
         <section id="viewHome" class="viewHome">
             <h1 class="title">Welcome</h1>
             <p class="body-text">Welcome to our advertisement site.</p>
