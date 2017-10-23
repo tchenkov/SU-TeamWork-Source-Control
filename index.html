@@ -12,65 +12,56 @@
 </head>
 
 <body>
-    <header id="menu" class="menu">
+<header id="menu" class="menu">
     <a href="#" id="linkHome" class="menu-item" >Home</a>
     <a href="#" id="linkLogin" class="menu-item">Login</a>
     <a href="#" id="linkRegister" class="menu-item">Register</a>
     <a href="#" id="linkListAds" class="menu-item">List Advertisements</a>
-		<a href="#" id="linkCreateAd" class="menu-item">Create Advertisement</a>
+    <a href="#" id="linkCreateAd" class="menu-item">Create Advertisement</a>
     <a href="#" id="linkLogout" class="menu-item">Logout</a>
-		<span id="loggedInUser" class="menu-item"></span>
+    <span id="loggedInUser" class="menu-item"></span>
     <div></div>
 </header>
-  
+
 <main>
-	<section id="loadingBox" class="loadingBox">Loading...</section>
-      
-	<section id="infoBox" class="infoBox">Info</section>
-  
-	<section id="errorBox" class="errorBox">Error</section>
-  
-  <section id="viewHome" class="viewHome">
+    <section id="loadingBox" class="loadingBox">Loading ...</section>
+
+    <section id="infoBox" class="infoBox">Info</section>
+
+    <section id="errorBox" class="errorBox">Error</section>
+
+    <section id="viewHome" class="viewHome">
         <h1 class="title">Welcome</h1>
         <p class="body-text">Welcome to our advertisement site.</p>
-  </section>
+    </section>
 
-  <section id="viewLogin" class="viewLogin">
-         <h1 class="titleForm">Please login</h1>
-         <form id="formLogin" class="form">
-             <div>Username:</div>
-             <div><input type="text" name="username" required /></div>
-             <div>Password:</div>
-             <div><input type="password" name="passwd" required /></div>
-             <div><input type="button" id="buttonLoginUser" value="Login" /></div>
-         </form>
-   </section>
+    <section id="viewLogin" class="viewLogin">
+        <h1 class="titleForm">Please login</h1>
+        <form id="formLogin" class="form">
+            <div>Username:</div>
+            <div><input type="text" name="username" required /></div>
+            <div>Password:</div>
+            <div><input type="password" name="passwd" required /></div>
+            <div><input type="button" id="buttonLoginUser" value="Login" /></div>
+        </form>
+    </section>
 
-   <section id="viewRegister" class="viewRegister">
-         <h1 class="titleForm">Please register here</h1>
-         <form id="formRegister" class="form">
-             <div>Username:</div>
-             <div><input type="text" name="username" required /></div>
-             <div>Password:</div>
-             <div><input type="password" name="passwd" required /></div>
-             <div><input type="button" id="buttonRegisterUser" value="Register" /></div>
-         </form>
-   </section>
+    <section id="viewRegister" class="viewRegister">
+        <h1 class="titleForm">Please register here</h1>
+        <form id="formRegister" class="form">
+            <div>Username:</div>
+            <div><input type="text" name="username" required /></div>
+            <div>Password:</div>
+            <div><input type="password" name="passwd" required /></div>
+            <div><input type="button" id="buttonRegisterUser" value="Register" /></div>
+        </form>
+    </section>
 
-   <section id="viewAds" class="viewAds">
-       <h1 class="titleForm">Advertisements</h1>
-          <div id="ads" class="ads">
-              <table>
-                 <tr>
-                      <th>Title</th>
-                      <th>Publisher</th>
-						          <th>Description</th>
-                      <th>Price</th>
-                      <th>Date Published</th>
-						          <th>Actions</th>
-                 </tr>
-                
-                 <tr>
+    <section id="viewAds" class="viewAds">
+        <h1 class="titleForm">Advertisements</h1>
+        <div id="ads" class="ads">
+            <table>
+                <tr>
                     <th>Title</th>
                     <th>Publisher</th>
                     <th>Description</th>
@@ -90,11 +81,11 @@
                         <a href="#">[Edit]</a>
                     </td>
                 </tr>
-               </table>
-          </div>
+            </table>
+        </div>
     </section>
 
-		<section id="viewCreateAd" class="viewCreateAd">
+    <section id="viewCreateAd" class="viewCreateAd">
         <h1 class="titleForm">Create new Advertisement</h1>
         <form id="formCreateAd" class="form">
             <div>Title:</div>
@@ -110,7 +101,7 @@
             <div><input type="button" id="buttonCreateAd" value="Create" /></div>
         </form>
     </section>
-  
+
     <section id="viewDetailsAd" class="viewDetailsAd">
     </section>
 
@@ -132,14 +123,10 @@
             <div><input type="button" id="buttonEditAd" value="Edit" /></div>
         </form>
     </section>
-
     <script>
         startApp();
     </script>
- </main>
-  
- <footer>Prodavachnik - Simple SPA Application</footer>
-  
- </body>
-
+</main>
+<footer>Prodavachnik - Simple SPA Application</footer>
+</body>
 </html>

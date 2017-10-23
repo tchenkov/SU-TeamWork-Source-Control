@@ -7,7 +7,7 @@
                 creator: 0
             },
             title: "XBoss 1080",
-		      	description: "Modded gaming console",
+            description: "Modded gaming console",
             publisher: "Pesho",
             datePublished: "2017-06-04",
             price: 100,
@@ -41,6 +41,7 @@
             password: "m"
         }
     ];
+
 
     // User login
     $.mockjax(function (requestSettings) {
@@ -94,8 +95,8 @@
             };
         }
     });
-	
-	// Get user info
+
+    // Get user info
     $.mockjax(function (requestSettings) {
         if (requestSettings.url.match(/https:\/\/mock\.api\.com\/user\/kid_rk\/(.+)/)) {
             let userId = requestSettings.url.match(/https:\/\/mock\.api\.com\/user\/kid_rk\/(.+)/)[1];
@@ -130,7 +131,7 @@
         }
     });
 
-	    // Create advert
+    // Create advert
     $.mockjax(function (requestSettings) {
         if (requestSettings.url === "https://mock.api.com/appdata/kid_rk/adverts" &&
             requestSettings.method === "POST") {
@@ -150,6 +151,7 @@
                                 creator: creator
                             },
                             title: data.title,
+                            description: data.description,
                             publisher: data.publisher,
                             datePublished: data.datePublished,
                             price: data.price
@@ -202,9 +204,8 @@
             };
         }
     });
-  
-  
-   // Edit advert
+
+    // Edit advert
     $.mockjax(function (requestSettings) {
         if (requestSettings.url.match(/https:\/\/mock\.api\.com\/appdata\/kid_rk\/adverts\/(.+)/) &&
             requestSettings.method === "PUT") {

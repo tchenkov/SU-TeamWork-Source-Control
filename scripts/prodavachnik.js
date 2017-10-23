@@ -1,10 +1,9 @@
 function startApp() {
 
-	 if (sessionStorage.getItem('authToken') !== null) {
-     let username = sessionStorage.getItem('username');
-     $('#loggedInUser').text("Welcome, " + username + "!");
+    if (sessionStorage.getItem('authToken') !== null) {
+        let username = sessionStorage.getItem('username');
+        $('#loggedInUser').text("Welcome, " + username + "!");
     }
-
     showHideMenuLinks();
     showHomeView();
 
@@ -13,27 +12,25 @@ function startApp() {
     $("#linkLogin").click(showLoginView);
     $("#linkRegister").click(showRegisterView);
     $("#linkListAds").click(listAdverts);
-	  $("#linkCreateAd").click(showCreateAdView);
+    $("#linkCreateAd").click(showCreateAdView);
     $("#linkLogout").click(logoutUser);
 
     // Bind the form submit buttons
     $("#buttonLoginUser").click(loginUser);
     $("#buttonRegisterUser").click(registerUser);
-	  $("#buttonCreateAd").click(createAdvert);
+    $("#buttonCreateAd").click(createAdvert);
     $("#buttonEditAd").click(editAdvert);
 
-	
-	// Bind the info / error boxes
-	  $(#infoBox, #errorBox).click(function() {
-		$(this).fadeOut();
-	});
-	
-	// Attach AJAX "loading" event listener
-	$(document).on({
-		ajaxStart: function() { $("#loadingBox").show() },
-		ajaxStop: function() { $("loadingBox").hide() }
-	});
+    // Bind the info / error boxes
+    $("#infoBox, #errorBox").click(function() {
+        $(this).fadeOut();
+    });
 
+    // Attach AJAX "loading" event listener
+    $(document).on({
+        ajaxStart: function() { $("#loadingBox").show() },
+        ajaxStop: function() { $("#loadingBox").hide() }
+    });
 
     const kinveyBaseUrl = "https://mock.api.com/";
     const kinveyAppKey = "kid_rk";
@@ -52,19 +49,17 @@ function startApp() {
             $("#linkLogin").show();
             $("#linkRegister").show();
             $("#linkListAds").hide();
-			      $("#linkCreateAd").hide();
+            $("#linkCreateAd").hide();
             $("#linkLogout").hide();
-           	$("#loggedInUser").hide();
-
+            $("#loggedInUser").hide();
         } else {
             // We have logged in user
             $("#linkLogin").hide();
             $("#linkRegister").hide();
             $("#linkListAds").show();
-			$("#linkCreateAd").show();
+            $("#linkCreateAd").show();
             $("#linkLogout").show();
-
-			$("#loggedInUser").show();
+            $("#loggedInUser").show();
         }
     }
 
@@ -93,7 +88,6 @@ function startApp() {
     function showHomeView() {
         showView('viewHome');
     }
-	
 
     function showLoginView() {
         showView('viewLogin');
@@ -104,10 +98,11 @@ function startApp() {
         $('#formRegister').trigger('reset');
         showView('viewRegister');
     }
-	function showCreateAdView() {
+
+    function showCreateAdView() {
         $('#formCreateAd').trigger('reset');
         showView('viewCreateAd');
-    } 
+    }
 
     // user/login
     function loginUser() {
@@ -133,7 +128,7 @@ function startApp() {
             saveAuthInSession(userInfo);
             showHideMenuLinks();
             listAdverts();
-			showInfo('Login successful.');
+            showInfo('Login successful.');
         }
     }
 
@@ -142,10 +137,9 @@ function startApp() {
         sessionStorage.setItem('authToken', userAuth);
         let userId = userInfo._id;
         sessionStorage.setItem('userId', userId);
-		    let username = userInfo.username;
+        let username = userInfo.username;
         sessionStorage.setItem('username', username);
         $('#loggedInUser').text("Welcome, " + username + "!");
-
     }
 
     // user/register
@@ -174,7 +168,7 @@ function startApp() {
             saveAuthInSession(userInfo);
             showHideMenuLinks();
             listAdverts();
-			      showInfo('User registration successful.');
+            showInfo('User registration successful.');
         }
     }
 
@@ -184,7 +178,7 @@ function startApp() {
         $('#loggedInUser').text("");
         showHideMenuLinks();
         showHomeView();
-		    showInfo('Logout successful.');
+        showInfo('Logout successful.');
     }
 
     // advertisement/all
@@ -201,25 +195,25 @@ function startApp() {
             url: kinveyAdvertsUrl,
             headers: kinveyAuthHeaders,
             success: loadAdvertsSuccess,
-			error: handleAjaxError
+            error: handleAjaxError
         });
 
         function loadAdvertsSuccess(adverts) {
-			showInfo('Advertisements loaded.');
+            showInfo('Advertisements loaded.');
             if (adverts.length === 0) {
                 $('#ads').text('No advertisements available.');
             } else {
                 let advertsTable = $('<table>')
                     .append($('<tr>').append(
                         '<th>Title</th>',
-						            '<th>Description</th>',
+                        '<th>Description</th>',
                         '<th>Publisher</th>',
                         '<th>Date Published</th>',
                         '<th>Price</th>',
                         '<th>Actions</th>')
-                          );        
-              
-                    for (let advert of adverts) {
+                    );
+
+                for (let advert of adverts) {
                     let readMoreLink = $(`<a data-id="${advert._id}" href="#">[Read More]</a>`)
                         .click(function() { displayAdvert($(this).attr("data-id")) });
                     let links = [readMoreLink];
@@ -232,7 +226,7 @@ function startApp() {
                         links = [readMoreLink, ' ', deleteLink, ' ', editLink];
                     }
 
-                     advertsTable.append($('<tr>').append(
+                    advertsTable.append($('<tr>').append(
                         $('<td>').text(advert.title),
                         $('<td>').text(advert.description),
                         $('<td>').text(advert.publisher),
@@ -247,46 +241,7 @@ function startApp() {
         }
     }
 
-	// advertisement/create
-    function createAdvert() {
-        const kinveyAuthHeaders = {
-            'Authorization': "Kinvey " + sessionStorage.getItem('authToken'),
-        };
-
-        const kinveyUserUrl =
-            `${kinveyBaseUrl}user/${kinveyAppKey}/${sessionStorage.getItem('userId')}`;
-
-        $.ajax({
-            method: "GET",
-            url: kinveyUserUrl,
-            headers: kinveyAuthHeaders,
-            success: afterPublisherRequest
-        });
-
-        function afterPublisherRequest(publisher) {
-            let advertData = {
-                title: $('#formCreateAd input[name=title]').val(),
-                publisher: publisher.username,
-                datePublished: $('#formCreateAd input[name=datePublished]').val(),
-                price: Number($('#formCreateAd input[name=price]').val())
-            };
-
-            const kinveyAdvertsUrl = kinveyBaseUrl + "appdata/" + kinveyAppKey + "/adverts";
-            $.ajax({
-                method: "POST",
-                url: kinveyAdvertsUrl,
-                headers: kinveyAuthHeaders,
-                data: advertData,
-                success: createAdvertSuccess
-            });
-
-            function createAdvertSuccess(response) {
-                listAdverts();
-            }
-        }
-    }
-
-     // advertisement/create
+    // advertisement/create
     function createAdvert() {
         const kinveyAuthHeaders = {
             'Authorization': "Kinvey " + sessionStorage.getItem('authToken'),
@@ -329,8 +284,8 @@ function startApp() {
             }
         }
     }
-       
-       // advertisement/delete
+
+    // advertisement/delete
     function deleteAdvert(advertId) {
         const kinveyBookUrl = kinveyBaseUrl + "appdata/" +
             kinveyAppKey + "/adverts/" + advertId;
@@ -351,8 +306,8 @@ function startApp() {
             showInfo('Advert deleted.');
         }
     }
-           
-  // advertisement/edit GET
+
+    // advertisement/edit GET
     function loadAdvertForEdit(advertId) {
         const kinveyBookUrl = kinveyBaseUrl + "appdata/" +
             kinveyAppKey + "/adverts/" + advertId;
